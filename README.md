@@ -1,1 +1,5 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+- Next JS App
+- Material UI Components
+- Email JS for contact us page
+- MailChimp for Subscribe component
+- Typescript
