@@ -2,7 +2,7 @@
 title: 'Two Forms of Pre-rendering'
 date: '2020-01-01'
 image: '/images/jack-profile.jpeg'
-description: 'Importantly, Next.js lets you **choose** which pre-rendering form to use for each page. You can create a "hybrid" Next.js app by using Static Generation for most pages and using Server-side Rendering for others.'
+description: 'Shorter descriptions are better'
 ---
 
 Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page.
