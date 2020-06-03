@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
-import { TextField, Button, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/styles'
+import { TextField, Button, Typography, useMediaQuery } from '@material-ui/core'
+import { makeStyles, useTheme } from '@material-ui/styles'
 import Paper from '../../layout/Paper'
 
 const useStyles = makeStyles((theme: any) => ({
@@ -27,65 +27,76 @@ const Subscribe = () => {
   const [email, setEmail] = useState(undefined as string | undefined)
   const isValid = () => !!email && email.length > 0 && email.indexOf('@') > -1
   const classes = useStyles()
+  const theme = useTheme()
+  const mobile = !useMediaQuery((theme as any).breakpoints.up('sm'), {
+    defaultMatches: true,
+  })
+
+  const text = (
+    <Typography
+      variant="body1"
+      style={{
+        alignSelf: 'center',
+        textAlign: 'center',
+        fontWeight: 500,
+      }}
+    >
+      Subscribe to our newsletter!
+    </Typography>
+  )
 
   return (
     <Paper className={classes.paper}>
       <MailchimpSubscribe
         url={url}
         render={({ subscribe, status, message }: any) => (
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              verticalAlign: 'middle',
-              justifyContent: 'center',
-            }}
-          >
-            <Typography
-              variant="body1"
+          <>
+            {mobile && text}
+            <div
               style={{
-                alignSelf: 'center',
-                textAlign: 'center',
-                fontWeight: 500,
+                display: 'flex',
+                flexDirection: 'row',
+                verticalAlign: 'middle',
+                justifyContent: 'center',
               }}
             >
-              Subscribe to our newsletter!
-            </Typography>
-            <TextField
-              id="outlined-basic"
-              label="Email"
-              variant="outlined"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              size="small"
-              className={classes.email}
-              inputProps={{
-                className: classes.emailInput,
-              }}
-            />
-            <Button
-              disabled={!isValid()}
-              onClick={() => subscribe({ EMAIL: email })}
-              color="primary"
-              variant="contained"
-              className={classes.subButton}
-              size="small"
-            >
-              Subscribe
-            </Button>
-            {status === 'sending' && (
-              <div style={{ color: 'blue' }}>sending...</div>
-            )}
-            {status === 'error' && (
-              <div
-                style={{ color: 'red' }}
-                dangerouslySetInnerHTML={{ __html: message }}
+              {!mobile && text}
+              <TextField
+                id="outlined-basic"
+                label="Email"
+                variant="outlined"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                size="small"
+                className={classes.email}
+                inputProps={{
+                  className: classes.emailInput,
+                }}
               />
-            )}
-            {status === 'success' && (
-              <div style={{ color: 'green' }}>TEST TEXT !</div>
-            )}
-          </div>
+              <Button
+                disabled={!isValid()}
+                onClick={() => subscribe({ EMAIL: email })}
+                color="primary"
+                variant="contained"
+                className={classes.subButton}
+                size="small"
+              >
+                Subscribe
+              </Button>
+              {status === 'sending' && (
+                <div style={{ color: 'blue' }}>sending...</div>
+              )}
+              {status === 'error' && (
+                <div
+                  style={{ color: 'red' }}
+                  dangerouslySetInnerHTML={{ __html: message }}
+                />
+              )}
+              {status === 'success' && (
+                <div style={{ color: 'green' }}>TEST TEXT !</div>
+              )}
+            </div>
+          </>
         )}
       />
     </Paper>
