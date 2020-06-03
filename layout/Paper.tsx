@@ -4,7 +4,7 @@ import clsx from 'clsx'
 
 const useStyles = makeStyles((theme: any) => ({
   paper: {
-    maxWidth: 800,
+    maxWidth: 1000,
     padding: 30,
     margin: 'auto',
     marginTop: 20,
@@ -12,11 +12,15 @@ const useStyles = makeStyles((theme: any) => ({
   },
 }))
 
-const Paper = (props: PaperProps) => {
-  const { className, ...otherProps } = props
+const Paper = (props: PaperProps & { noWrapper?: boolean }) => {
+  const { className, noWrapper = false, ...otherProps } = props
   const classes = useStyles()
 
-  return <MuiPaper className={clsx(classes.paper, className)} {...otherProps} />
+  const paper = (
+    <MuiPaper className={clsx(classes.paper, className)} {...otherProps} />
+  )
+
+  return noWrapper ? paper : <div style={{ margin: '15px' }}>{paper}</div>
 }
 
 export default Paper

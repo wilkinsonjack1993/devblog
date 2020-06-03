@@ -17,13 +17,14 @@ import { useRouter } from 'next/dist/client/router'
 const useStyles = makeStyles((theme: any) => ({
   root: {
     boxShadow: 'none',
+    background: '#1a1a1a',
   },
   signOutButton: {
     marginLeft: theme.spacing(1),
   },
   logo: {
-    height: 56,
-    width: 150,
+    height: 'auto',
+    width: 100,
     borderRadius: 8,
     padding: 3,
   },
@@ -48,7 +49,7 @@ const Topbar = (props: Props) => {
           <img
             className={classes.logo}
             alt="Logo"
-            src="/images/burpees/burpee3.jpeg"
+            src="/images/logo-initials.png"
           />
         </Link>
         <div style={{ flexGrow: 1 }} />

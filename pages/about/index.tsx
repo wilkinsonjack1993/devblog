@@ -1,7 +1,13 @@
 import React from 'react'
 import Subscribe from '../../components/Subscribe/Subscribe'
 import Paper from '../../layout/Paper'
-import { Typography, makeStyles, GridList, Grid } from '@material-ui/core'
+import {
+  Typography,
+  makeStyles,
+  GridList,
+  Grid,
+  Avatar,
+} from '@material-ui/core'
 import Link from 'next/link'
 
 const Technologies = [
@@ -29,6 +35,14 @@ const useStyles = makeStyles((theme: any) => ({
     flexDirection: 'row',
     display: 'flex',
   },
+  avatar: {
+    margin: 10,
+    marginBottom: 20,
+    marginRight: 30,
+    width: theme.spacing(9),
+    height: theme.spacing(9),
+    alignSelf: 'center',
+  },
 }))
 
 const About = () => {
@@ -37,9 +51,22 @@ const About = () => {
   return (
     <>
       <Paper>
-        <Typography gutterBottom variant="h5">
-          Welcome to Full Frontend Dev
-        </Typography>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'row',
+          }}
+        >
+          <Avatar
+            src={'/images/jack-profile.jpeg'}
+            className={classes.avatar}
+            sizes="large"
+          />
+          <Typography gutterBottom variant="h5">
+            Welcome to Full Frontend Dev
+          </Typography>
+        </div>
         <section>
           <Typography gutterBottom variant="body1">
             I set up this website as a way to record and share some of the Web
@@ -50,7 +77,7 @@ const About = () => {
         <Typography gutterBottom variant="body1">
           I have been a Software Engineer for a number of years but have found a
           real passion in the Web Development sector. Here's a random list of
-          some (but not all) of the things that are intriguing me at the moment
+          some (but not all) of the things that are intriguing me at the moment:
         </Typography>
         <GridList
           cellHeight="auto"

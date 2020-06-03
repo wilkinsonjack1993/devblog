@@ -43,7 +43,7 @@ const Subscribe = () => {
           >
             <Typography
               variant="body1"
-              style={{ alignSelf: 'center', marginRight: 15 }}
+              style={{ alignSelf: 'center', marginRight: 15, fontWeight: 500 }}
             >
               Subscribe to our newsletter!
             </Typography>

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
 import Paper from '../layout/Paper'
-import { Card, Avatar, Typography } from '@material-ui/core'
+import { Card, Avatar, Typography, Divider } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import Subscribe from '../components/Subscribe/Subscribe'
 
@@ -55,6 +55,7 @@ const useStyles = makeStyles((theme: any) => ({
     WebkitBoxOrient: 'vertical',
     overflow: 'hidden',
     fontHeight: 8,
+    marginTop: 10,
   },
   title: {
     fontWeight: 400,
@@ -71,7 +72,7 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
       </Head>
       <Subscribe />
       <Paper>
-        <Typography variant="h5">Blog</Typography>
+        <Typography variant="h5">Recent Posts</Typography>
         <br />
         <ul className={classes.cardList}>
           {allPostsData.map(({ id, date, title, image, description }) => (
@@ -84,16 +85,20 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
                     sizes="large"
                   />
                   <div className={classes.cardContent}>
-                    <Typography variant="h6" className={classes.title}>
+                    <Typography variant="h5" className={classes.title}>
                       {title}
                     </Typography>
+
                     {description && (
-                      <Typography
-                        variant="body2"
-                        className={classes.description}
-                      >
-                        {description}
-                      </Typography>
+                      <>
+                        <Divider />
+                        <Typography
+                          variant="body2"
+                          className={classes.description}
+                        >
+                          {description}
+                        </Typography>
+                      </>
                     )}
                     <Typography
                       align="right"

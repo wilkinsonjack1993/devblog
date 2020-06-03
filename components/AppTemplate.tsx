@@ -5,6 +5,7 @@ import Sidebar from './AppBar/Sidebar'
 import AppBar from './AppBar/AppBar'
 import DashboardIcon from '@material-ui/icons/Dashboard'
 import InfoIcon from '@material-ui/icons/Info'
+import ContactMail from '@material-ui/icons/ContactMail'
 
 const useStyles = makeStyles((theme: DefaultTheme & { breakpoints: any }) => ({
   root: {
@@ -18,7 +19,6 @@ const useStyles = makeStyles((theme: DefaultTheme & { breakpoints: any }) => ({
   },
   content: {
     flexGrow: 1,
-    background: '#F3F2EF',
     paddingTop: 20,
   },
 }))
@@ -42,7 +42,7 @@ const pages = [
   {
     title: 'Contact Us',
     href: '/contact',
-    icon: <InfoIcon />,
+    icon: <ContactMail />,
   },
 ]
 

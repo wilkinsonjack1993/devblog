@@ -12,16 +12,16 @@ function createMyTheme(options: ThemeOptions) {
 export default createMyTheme({
   palette: {
     primary: {
-      main: '#556cd6',
+      main: '#1a1a1a',
     },
     secondary: {
-      main: '#19857b',
+      main: '#71DB77',
     },
     error: {
       main: red.A400,
     },
     background: {
-      default: '#fff',
+      default: '#fafafa',
     },
   },
 })
