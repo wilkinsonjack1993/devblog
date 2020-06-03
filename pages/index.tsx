@@ -4,7 +4,14 @@ import Link from 'next/link'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
 import Paper from '../layout/Paper'
-import { Card, Avatar, Typography, Divider } from '@material-ui/core'
+import {
+  Card,
+  Avatar,
+  Typography,
+  Divider,
+  useTheme,
+  useMediaQuery,
+} from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import Subscribe from '../components/Subscribe/Subscribe'
 
@@ -65,6 +72,11 @@ const useStyles = makeStyles((theme: any) => ({
 export default function Home({ allPostsData }: { allPostsData: Post[] }) {
   const classes = useStyles()
 
+  const theme = useTheme()
+  const mobile = !useMediaQuery((theme as any).breakpoints.up('md'), {
+    defaultMatches: true,
+  })
+
   return (
     <>
       <Head>
@@ -85,11 +97,14 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
                     sizes="large"
                   />
                   <div className={classes.cardContent}>
-                    <Typography variant="h5" className={classes.title}>
+                    <Typography
+                      variant={mobile ? 'h5' : 'h4'}
+                      className={classes.title}
+                    >
                       {title}
                     </Typography>
 
-                    {description && (
+                    {description && !mobile && (
                       <>
                         <Divider />
                         <Typography

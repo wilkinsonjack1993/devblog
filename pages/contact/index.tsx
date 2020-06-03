@@ -52,95 +52,97 @@ const Contact = () => {
 
   return (
     <Paper elevation={3} className={classes.paper}>
-      <Typography variant="h4">Contact Us</Typography>
-      <br />
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <TextField
-          name="name"
-          inputRef={register({
-            required: 'Required',
-          })}
-          fullWidth
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="outlined"
-          label="Name"
-          required
-        />
-        {errors.name && errors.name.message}
-        <Typography className={classes.error}>
+      <div style={{ margin: '20px' }}>
+        <Typography variant="h4">Contact Us</Typography>
+        <br />
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <TextField
+            name="name"
+            inputRef={register({
+              required: 'Required',
+            })}
+            fullWidth
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="outlined"
+            label="Name"
+            required
+          />
           {errors.name && errors.name.message}
-        </Typography>
-        <TextField
-          name="email"
-          inputRef={register({
-            required: 'Required',
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-              message: 'invalid email address',
-            },
-          })}
-          fullWidth
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="outlined"
-          label="Email"
-          required
-        />
-        <Typography variant="caption" className={classes.error}>
-          {errors.email && errors.email.message}
-        </Typography>
+          <Typography className={classes.error}>
+            {errors.name && errors.name.message}
+          </Typography>
+          <TextField
+            name="email"
+            inputRef={register({
+              required: 'Required',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                message: 'invalid email address',
+              },
+            })}
+            fullWidth
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="outlined"
+            label="Email"
+            required
+          />
+          <Typography variant="caption" className={classes.error}>
+            {errors.email && errors.email.message}
+          </Typography>
 
-        <TextField
-          name="subject"
-          label="Subject"
-          inputRef={register({})}
-          fullWidth
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="outlined"
-        />
+          <TextField
+            name="subject"
+            label="Subject"
+            inputRef={register({})}
+            fullWidth
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="outlined"
+          />
 
-        <TextField
-          name="message"
-          label="Message"
-          rows={10}
-          multiline
-          rowsMax={30}
-          fullWidth
-          margin="normal"
-          inputRef={register({
-            required: 'Required',
-          })}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="outlined"
-          required
-        />
+          <TextField
+            name="message"
+            label="Message"
+            rows={10}
+            multiline
+            rowsMax={30}
+            fullWidth
+            margin="normal"
+            inputRef={register({
+              required: 'Required',
+            })}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="outlined"
+            required
+          />
 
-        {messageSubmitted && (
-          <Alert severity="success">
-            Your message was successfully sent. Thank you!
-          </Alert>
-        )}
+          {messageSubmitted && (
+            <Alert severity="success">
+              Your message was successfully sent. Thank you!
+            </Alert>
+          )}
 
-        <Button
-          type="submit"
-          onClick={() => handleSubmit(onSubmit)}
-          color="primary"
-          variant="contained"
-          className={classes.submitButton}
-        >
-          Submit
-        </Button>
-      </form>
+          <Button
+            type="submit"
+            onClick={() => handleSubmit(onSubmit)}
+            color="primary"
+            variant="contained"
+            className={classes.submitButton}
+          >
+            Submit
+          </Button>
+        </form>
+      </div>
     </Paper>
   )
 }

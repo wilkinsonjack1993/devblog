@@ -51,64 +51,67 @@ const About = () => {
   return (
     <>
       <Paper>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: 'row',
-          }}
-        >
-          <Avatar
-            src={'/images/jack-profile.jpeg'}
-            className={classes.avatar}
-            sizes="large"
-          />
-          <Typography gutterBottom variant="h5">
-            Welcome to Full Frontend Dev
+        <div style={{ margin: '20px' }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              flexDirection: 'row',
+            }}
+          >
+            <Avatar
+              src={'/images/jack-profile.jpeg'}
+              className={classes.avatar}
+              sizes="large"
+            />
+            <Typography gutterBottom variant="h5">
+              Welcome to Full Frontend Dev
+            </Typography>
+          </div>
+          <section>
+            <Typography gutterBottom variant="body1">
+              I set up this website as a way to record and share some of the Web
+              Development ideas, articles, technologies and trends that I find
+              interesting.
+            </Typography>
+          </section>
+          <Typography gutterBottom variant="body1">
+            I have been a Software Engineer for a number of years but have found
+            a real passion in the Web Development sector. Here's a random list
+            of some (but not all) of the things that are intriguing me at the
+            moment:
+          </Typography>
+          <GridList
+            cellHeight="auto"
+            style={{
+              listStyle: 'disc',
+              listStylePosition: 'inside',
+              margin: '20px',
+            }}
+            spacing={8}
+          >
+            {Technologies.map((tech) => (
+              <Grid
+                xl={4}
+                lg={4}
+                md={4}
+                sm={6}
+                xs={12}
+                className={classes.listItem}
+              >
+                <li>{tech}</li>
+              </Grid>
+            ))}
+          </GridList>
+          <Typography gutterBottom variant="body1">
+            Please feel free to get in contact if you would like to discuss any
+            of the articles on this site. There is a contact form{' '}
+            <Link href="/contact">here</Link> or find me on{' '}
+            <Link href="https://www.linkedin.com/in/jack-wilkinson-ab484ba8/">
+              Linked In.
+            </Link>
           </Typography>
         </div>
-        <section>
-          <Typography gutterBottom variant="body1">
-            I set up this website as a way to record and share some of the Web
-            Development ideas, articles, technologies and trends that I find
-            interesting.
-          </Typography>
-        </section>
-        <Typography gutterBottom variant="body1">
-          I have been a Software Engineer for a number of years but have found a
-          real passion in the Web Development sector. Here's a random list of
-          some (but not all) of the things that are intriguing me at the moment:
-        </Typography>
-        <GridList
-          cellHeight="auto"
-          style={{
-            listStyle: 'disc',
-            listStylePosition: 'inside',
-            margin: '20px',
-          }}
-          spacing={8}
-        >
-          {Technologies.map((tech) => (
-            <Grid
-              xl={4}
-              lg={4}
-              md={4}
-              sm={6}
-              xs={12}
-              className={classes.listItem}
-            >
-              <li>{tech}</li>
-            </Grid>
-          ))}
-        </GridList>
-        <Typography gutterBottom variant="body1">
-          Please feel free to get in contact if you would like to discuss any of
-          the articles on this site. There is a contact form{' '}
-          <Link href="/contact">here</Link> or find me on{' '}
-          <Link href="https://www.linkedin.com/in/jack-wilkinson-ab484ba8/">
-            Linked In.
-          </Link>
-        </Typography>
       </Paper>
 
       <Subscribe />

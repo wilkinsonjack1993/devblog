@@ -5,7 +5,7 @@ import clsx from 'clsx'
 const useStyles = makeStyles((theme: any) => ({
   paper: {
     maxWidth: 1000,
-    padding: 30,
+    padding: 15,
     margin: 'auto',
     marginTop: 20,
     borderRadius: 12,

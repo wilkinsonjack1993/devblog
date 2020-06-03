@@ -43,7 +43,11 @@ const Subscribe = () => {
           >
             <Typography
               variant="body1"
-              style={{ alignSelf: 'center', marginRight: 15, fontWeight: 500 }}
+              style={{
+                alignSelf: 'center',
+                textAlign: 'center',
+                fontWeight: 500,
+              }}
             >
               Subscribe to our newsletter!
             </Typography>
@@ -67,7 +71,7 @@ const Subscribe = () => {
               className={classes.subButton}
               size="small"
             >
-              Subscribe!
+              Subscribe
             </Button>
             {status === 'sending' && (
               <div style={{ color: 'blue' }}>sending...</div>
