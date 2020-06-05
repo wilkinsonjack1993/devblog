@@ -93,7 +93,7 @@ const Subscribe = () => {
                 />
               )}
               {status === 'success' && (
-                <div style={{ color: 'green' }}>TEST TEXT !</div>
+                <div style={{ color: 'green' }}>Success!</div>
               )}
             </div>
           </>
