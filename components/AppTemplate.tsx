@@ -1,4 +1,4 @@
-import React, { useState, ReactNode } from 'react'
+import React, { useState, ReactNode, useEffect } from 'react'
 import { makeStyles, useTheme, DefaultTheme } from '@material-ui/styles'
 import { useMediaQuery } from '@material-ui/core'
 import Sidebar from './AppBar/Sidebar'

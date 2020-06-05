@@ -1,13 +1,36 @@
 import React from 'react'
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentProps,
+} from 'next/document'
 import { ServerStyleSheets } from '@material-ui/styles'
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
 import mytheme from '../styles/theme'
+import { GOOGLE_ANALYTICS_ID } from '../lib/analytics'
 
 const theme = responsiveFontSizes(createMuiTheme(mytheme))
 
-class MyDocument extends Document {
+interface Props {
+  isProduction: true
+}
+
+class MyDocument extends Document<DocumentProps & Props> {
+  setGoogleTags() {
+    return {
+      __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', ${GOOGLE_ANALYTICS_ID});
+      `,
+    }
+  }
+
   render() {
+    const { isProduction } = this.props
     return (
       <Html>
         <Head>
@@ -44,6 +67,16 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          {isProduction && (
+            <>
+              <script
+                async
+                src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}
+              />
+              {/* We call the function above to inject the contents of the script tag */}
+              <script dangerouslySetInnerHTML={this.setGoogleTags()} />
+            </>
+          )}
         </body>
       </Html>
     )
@@ -61,9 +94,11 @@ MyDocument.getInitialProps = async (ctx) => {
     })
 
   const initialProps = await Document.getInitialProps(ctx)
+  const isProduction = process.env.NODE_ENV === 'production'
 
   return {
     ...initialProps,
+    isProduction,
     // Styles fragment is rendered after the app and page rendering finish.
     styles: [
       <React.Fragment key="styles">

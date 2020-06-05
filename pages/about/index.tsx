@@ -90,8 +90,9 @@ const About = () => {
             }}
             spacing={8}
           >
-            {Technologies.map((tech) => (
+            {Technologies.map((tech, index) => (
               <Grid
+                key={index}
                 xl={4}
                 lg={4}
                 md={4}

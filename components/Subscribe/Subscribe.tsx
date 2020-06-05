@@ -83,8 +83,14 @@ const Subscribe = () => {
               >
                 Subscribe
               </Button>
+            </div>
+            <div style={{ textAlign: 'center' }}>
               {status === 'sending' && (
-                <div style={{ color: 'blue' }}>sending...</div>
+                <div style={{ color: 'blue' }}>
+                  <Typography variant="body1" style={{ fontWeight: 500 }}>
+                    Sending...
+                  </Typography>
+                </div>
               )}
               {status === 'error' && (
                 <div
@@ -93,7 +99,11 @@ const Subscribe = () => {
                 />
               )}
               {status === 'success' && (
-                <div style={{ color: 'green' }}>Success!</div>
+                <div style={{ color: 'green' }}>
+                  <Typography variant="body1" style={{ fontWeight: 500 }}>
+                    Success!
+                  </Typography>
+                </div>
               )}
             </div>
           </>
