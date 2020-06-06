@@ -8,7 +8,6 @@ declare global {
 
 export const trackPageView = (url: string) => {
   try {
-    console.log(process.env.NODE_ENV)
     window.gtag('config', GOOGLE_ANALYTICS_ID, {
       page_location: url,
     })
