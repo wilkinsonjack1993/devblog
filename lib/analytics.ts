@@ -8,11 +8,12 @@ declare global {
 
 export const trackPageView = (url: string) => {
   try {
-    window.gtag('config', 'UA-XXXXXXXX-X', {
+    console.log(process.env.NODE_ENV)
+    window.gtag('config', GOOGLE_ANALYTICS_ID, {
       page_location: url,
     })
   } catch (error) {
-    logError({ type: 'cannot track page view', err: error.message })
+    logError({ type: 'cannot track page view', page: url, err: error.message })
   }
 }
 
@@ -22,7 +23,7 @@ export const logError = (properties: Object) => {
 
 export const trackEvent = (name: string, properties: Object) => {
   try {
-    window.gtag('event', 'login', { method: 'Google' })
+    window.gtag('event', name, properties)
   } catch (error) {
     console.error('Error: ', error)
   }
