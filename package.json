@@ -11,7 +11,7 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.54",
     "@types/react-mailchimp-subscribe": "^2.0.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "date-fns": "^2.11.1",
     "gray-matter": "^4.0.2",
     "next": "9.3.5",
